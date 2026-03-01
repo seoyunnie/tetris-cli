@@ -1,0 +1,41 @@
+{
+  "$schema": "https://www.schemastore.org/package",
+  "name": "@seoyunnie/tetris-cli",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Seoyun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seoyunnie/tetris-cli.git"
+  },
+  "bin": {
+    "tetris-cli": "./dist/index.mjs"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint --type-aware --type-check --report-unused-disable-directives",
+    "lint:fix": "oxlint --type-aware --type-check --report-unused-disable-directives --fix",
+    "start": "node ./src/index.ts"
+  },
+  "devDependencies": {
+    "@tsconfig/node-ts": "^23.6.4",
+    "@tsconfig/node24": "^24.0.4",
+    "@tsconfig/recommended": "^1.0.13",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^24.11.0",
+    "oxfmt": "^0.35.0",
+    "oxlint": "^1.50.0",
+    "oxlint-tsgolint": "^0.15.0",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=24.14",
+    "pnpm": ">=10.16"
+  },
+  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017"
+}
