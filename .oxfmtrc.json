@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+
+  "ignorePatterns": ["pnpm-lock.yaml"],
+
+  "objectWrap": "collapse",
+  "printWidth": 120,
+
+  "sortImports": {
+    "groups": [
+      "type-import",
+      "value-builtin",
+      "value-external",
+      ["type-internal", "type-subpath"],
+      ["value-internal", "value-subpath"],
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      "unknown"
+    ]
+  },
+  "sortPackageJson": true
+}

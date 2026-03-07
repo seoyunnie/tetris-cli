@@ -1,0 +1,10 @@
+{
+  "oxc.configPath": ".oxlintrc.json",
+  "oxc.disableNestedConfig": true,
+  "oxc.enable": true,
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "oxc.tsConfigPath": "tsconfig.json",
+  "oxc.unusedDisableDirectives": "warn",
+
+  "[json][jsonc][markdown][typescript][yaml]": { "editor.defaultFormatter": "oxc.oxc-vscode" }
+}

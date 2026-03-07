@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+
+    /* JavaScript */
+    "oxc.oxc-vscode",
+
+    /* YAML */
+    "redhat.vscode-yaml"
+  ]
+}
