@@ -1,0 +1,20 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig.json",
+
+  "extends": [
+    "@tsconfig/bases/recommended",
+    "@tsconfig/bases/strictest",
+    "@tsconfig/bases/node24",
+    "@tsconfig/bases/node-ts"
+  ],
+
+  "compilerOptions": {
+    /* Modules */
+    "types": ["node"],
+
+    /* Emit */
+    "noEmit": true
+  },
+
+  "include": ["src/**/*"]
+}
