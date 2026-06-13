@@ -1,0 +1,11 @@
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Node.js
+dist/
+node_modules/
+
+# macOS
+**/.DS_Store
