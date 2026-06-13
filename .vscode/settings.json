@@ -1,0 +1,9 @@
+{
+  "oxc.configPath": "oxlint.config.ts",
+  "oxc.disableNestedConfig": true,
+  "oxc.enable": true,
+  "oxc.fmt.configPath": "oxfmt.config.ts",
+  "oxc.tsConfigPath": "tsconfig.json",
+
+  "[json][jsonc][markdown][typescript][yaml]": { "editor.defaultFormatter": "oxc.oxc-vscode" }
+}
