@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.schemastore.org/package.json",
+  "name": "@seoyunnie/tetris-cli",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Seoyun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seoyunnie/tetris-cli.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "fmt": "oxfmt",
+    "fmt:check": "pnpm run fmt --check",
+    "lint": "oxlint",
+    "lint:fix": "pnpm run lint --fix",
+    "start": "node ./src/index.ts"
+  },
+  "devDependencies": {
+    "@seoyunnie/oxc-config": "^1.4.0",
+    "@tsconfig/bases": "^1.0.25",
+    "@types/node": "^24.13.2",
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.6.0",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^24.12.0",
+      "onFail": "error"
+    }
+  },
+  "packageManager": "pnpm@11.6.0+sha512.9a36518224080c6fe5165afdcfe79bfa118c29be703f3f462b1e32efe1e98e47e8750b148e08286250aad4113cc7993ca413c4e2cd447752708c2ee5751bc95f"
+}
