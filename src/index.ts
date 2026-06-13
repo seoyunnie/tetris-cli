@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+import process from "node:process";
+
+import { GameLoop } from "./core/game-loop.ts";
+import { Game } from "./core/game.ts";
+import { createKeypressHandler } from "./ui/input.ts";
+import { setupTerminal, teardownTerminal } from "./ui/terminal.ts";
+
+const game = new Game();
+
+const keypressHandler = createKeypressHandler(game);
+
+let isShuttingDown = false;
+
+function shutdown(): void {
+  if (isShuttingDown) {
+    return;
+  }
+
+  isShuttingDown = true;
+
+  if (!game.hasQuit) {
+    game.quit();
+  }
+
+  teardownTerminal(keypressHandler);
+}
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
+
+process.on("uncaughtException", (err) => {
+  shutdown();
+
+  console.error(err);
+
+  process.exit(1);
+});
+
+setupTerminal(keypressHandler);
+
+new GameLoop(game, shutdown).start();
