@@ -1,0 +1,9 @@
+# Dependency Resolution
+minimumReleaseAgeExclude:
+  - "@seoyunnie/*"
+
+# CLI Settings
+pmOnFail: ignore
+
+# Node.js Settings
+runtimeOnFail: ignore
