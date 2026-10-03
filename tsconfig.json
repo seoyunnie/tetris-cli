@@ -1,19 +1,38 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig.json",
 
-  "extends": [
-    "@tsconfig/bases/recommended",
-    "@tsconfig/bases/strictest",
-    "@tsconfig/bases/node24",
-    "@tsconfig/bases/node-ts"
-  ],
-
   "compilerOptions": {
+    /* Type Checking */
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
     /* Modules */
+    "module": "node20",
+    "rewriteRelativeImportExtensions": true,
     "types": ["node"],
 
     /* Emit */
-    "noEmit": true
+    "noEmit": true,
+
+    /* Interop Constraints */
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+
+    /* Language and Environment */
+    "lib": ["ES2025", "ESNext.Error"],
+    "moduleDetection": "force",
+    "target": "es2025",
+
+    /* Completeness */
+    "skipLibCheck": true
   },
 
   "include": ["src/**/*"]

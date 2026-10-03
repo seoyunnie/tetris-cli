@@ -11,7 +11,7 @@ export default defineConfig({
   env: {
     builtin: true,
     node: true,
-    es2024: true,
+    es2025: true,
   },
 
   extends: [baseConfig],
