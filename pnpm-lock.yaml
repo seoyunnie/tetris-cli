@@ -11,9 +11,6 @@ importers:
       '@seoyunnie/oxc-config':
         specifier: ^1.6.0
         version: 1.6.0(oxfmt@0.71.0)(oxlint-tsgolint@7.0.2003)(oxlint@1.86.0(oxlint-tsgolint@7.0.2003))
-      '@tsconfig/bases':
-        specifier: ^1.0.28
-        version: 1.0.28
       '@types/node':
         specifier: ^24.19.0
         version: 24.19.0
@@ -442,9 +439,6 @@ packages:
       oxfmt: '>=0.71.0'
       oxlint: '>=1.86.0'
       oxlint-tsgolint: '>=7.0.2003'
-
-  '@tsconfig/bases@1.0.28':
-    resolution: {integrity: sha512-l326opM2+2gDiv3fYIzy12IeUJkHwNbt9pI+Ww2Byk4D1AfJt+CJmbiIxXtWaxY06514pAO5YXBneufph9WKFQ==}
 
   '@tybys/wasm-util@0.10.5':
     resolution: {integrity: sha512-dOGOPxlaNV+G046mZzN+9C0dAcQZeSKcXiVaM0TYy/LM4ttTmgSBDxYfovcYI8Em3+eAbiAYpvWLOv8+ZVRJKA==}
@@ -1062,8 +1056,6 @@ snapshots:
       oxfmt: 0.71.0
       oxlint: 1.86.0(oxlint-tsgolint@7.0.2003)
       oxlint-tsgolint: 7.0.2003
-
-  '@tsconfig/bases@1.0.28': {}
 
   '@tybys/wasm-util@0.10.5':
     dependencies:
