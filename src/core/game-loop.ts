@@ -7,6 +7,7 @@ export class GameLoop {
   static readonly #FPS = 30;
 
   static readonly #GRAVITY_INTERVAL_MS = 800;
+  static readonly #LINE_CLEAR_INTERVAL_MS = 30;
   static readonly #FRAME_DURATION_MS = MS_PER_SECOND / GameLoop.#FPS;
 
   readonly #game: Game;
@@ -14,6 +15,7 @@ export class GameLoop {
   #previousTime = 0;
 
   #gravityAccumulator = 0;
+  #lineClearAccumulator = 0;
   #renderAccumulator = 0;
 
   readonly #onShutdown: () => void;
@@ -36,14 +38,23 @@ export class GameLoop {
     this.#previousTime = now;
 
     this.#gravityAccumulator += deltaTime;
+    this.#lineClearAccumulator += deltaTime;
     this.#renderAccumulator += deltaTime;
 
-    while (this.#gravityAccumulator >= GameLoop.#GRAVITY_INTERVAL_MS) {
-      if (!this.#game.isOver) {
-        this.#game.moveDown();
-      }
+    if (this.#game.isClearingLines) {
+      if (this.#lineClearAccumulator >= GameLoop.#LINE_CLEAR_INTERVAL_MS) {
+        this.#game.advanceLineClear();
 
-      this.#gravityAccumulator -= GameLoop.#GRAVITY_INTERVAL_MS;
+        this.#lineClearAccumulator %= GameLoop.#LINE_CLEAR_INTERVAL_MS;
+      }
+    } else {
+      while (this.#gravityAccumulator >= GameLoop.#GRAVITY_INTERVAL_MS) {
+        if (!this.#game.isOver) {
+          this.#game.moveDown();
+        }
+
+        this.#gravityAccumulator -= GameLoop.#GRAVITY_INTERVAL_MS;
+      }
     }
 
     if (this.#renderAccumulator >= GameLoop.#FRAME_DURATION_MS) {
