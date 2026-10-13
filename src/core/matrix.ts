@@ -15,6 +15,10 @@ export class Matrix {
     this.#grid[row]! |= 1 << col;
   }
 
+  clearCell({ x: col, y: row }: Readonly<Position>): void {
+    this.#grid[row]! &= ~(1 << col);
+  }
+
   isInside({ x: col, y: row }: Readonly<Position>): boolean {
     return col >= 0 && col < Matrix.COLUMN_COUNT && row >= 0 && row < Matrix.ROW_COUNT;
   }
@@ -31,23 +35,33 @@ export class Matrix {
     this.#grid[row] = 0;
   }
 
-  moveRowDown(row: number, rowStep: number): void {
-    this.#grid[row + rowStep] = this.#grid[row]!;
+  deleteRow(row: number): void {
+    for (let srcRow = row; srcRow > 0; srcRow--) {
+      this.#grid[srcRow] = this.#grid[srcRow - 1]!;
+    }
 
-    this.clearRow(row);
+    this.clearRow(0);
   }
 
-  clearFullRows(): number {
+  *clearFullRows(): Generator<void, number, void> {
     let fullRowCnt = 0;
 
     for (let row = Matrix.ROW_COUNT - 1; row >= 0; row--) {
-      if (this.isRowFull(row)) {
-        this.clearRow(row);
-
-        fullRowCnt++;
-      } else if (fullRowCnt > 0) {
-        this.moveRowDown(row, fullRowCnt);
+      if (!this.isRowFull(row)) {
+        continue;
       }
+
+      for (let col = 0; col < Matrix.COLUMN_COUNT; col++) {
+        this.clearCell({ x: col, y: row });
+
+        yield;
+      }
+
+      this.deleteRow(row);
+
+      fullRowCnt++;
+
+      row++;
     }
 
     return fullRowCnt;

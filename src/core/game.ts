@@ -25,6 +25,8 @@ export class Game {
   #nextTetromino: Tetromino;
   #remainingTetrominoes: Tetromino[];
 
+  #lineClearGenerator: Generator<void, number, void> | undefined;
+
   #isOver = false;
   #hasQuit = false;
 
@@ -44,6 +46,10 @@ export class Game {
 
   get nextTetromino(): Tetromino {
     return this.#nextTetromino;
+  }
+
+  get isClearingLines(): boolean {
+    return this.#lineClearGenerator !== undefined;
   }
 
   get isOver(): boolean {
@@ -81,10 +87,7 @@ export class Game {
       this.matrix.fillCell(pos);
     }
 
-    const clearedLineCnt = this.matrix.clearFullRows();
-
-    this.#fullLineCount += clearedLineCnt;
-    this.updateScore(clearedLineCnt, 0);
+    this.#lineClearGenerator = this.matrix.clearFullRows();
 
     this.#currentTetromino = this.#nextTetromino;
     this.#nextTetromino = this.#getRandomTetromino();
@@ -94,7 +97,28 @@ export class Game {
     }
   }
 
+  advanceLineClear(): void {
+    if (this.#lineClearGenerator === undefined) {
+      return;
+    }
+
+    const res = this.#lineClearGenerator.next();
+
+    if (res.done !== true) {
+      return;
+    }
+
+    this.#lineClearGenerator = undefined;
+
+    this.#fullLineCount += res.value;
+    this.updateScore(res.value, 0);
+  }
+
   moveLeft(): void {
+    if (this.isClearingLines) {
+      return;
+    }
+
     this.#currentTetromino.moveLeft();
 
     if (!this.isInsideGrid() || !this.canPlaceTetromino()) {
@@ -103,6 +127,10 @@ export class Game {
   }
 
   moveRight(): void {
+    if (this.isClearingLines) {
+      return;
+    }
+
     this.#currentTetromino.moveRight();
 
     if (!this.isInsideGrid() || !this.canPlaceTetromino()) {
@@ -111,6 +139,10 @@ export class Game {
   }
 
   moveDown(awardScore = false): void {
+    if (this.isClearingLines) {
+      return;
+    }
+
     this.#currentTetromino.moveDown();
 
     if (!this.isInsideGrid() || !this.canPlaceTetromino()) {
@@ -127,6 +159,10 @@ export class Game {
   }
 
   hardDrop(): void {
+    if (this.isClearingLines) {
+      return;
+    }
+
     while (true) {
       this.#currentTetromino.moveDown();
 
@@ -143,6 +179,10 @@ export class Game {
   }
 
   rotate(): void {
+    if (this.isClearingLines) {
+      return;
+    }
+
     this.#currentTetromino.rotate();
 
     if (!this.isInsideGrid() || !this.canPlaceTetromino()) {
@@ -155,6 +195,8 @@ export class Game {
 
     this.#fullLineCount = 0;
     this.#score = 0;
+
+    this.#lineClearGenerator = undefined;
 
     this.#remainingTetrominoes = getNewInstances();
     this.#currentTetromino = this.#getRandomTetromino();
