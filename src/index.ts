@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 import process from "node:process";
+import { styleText } from "node:util";
+
+import { consola } from "consola";
 
 import { GameLoop } from "./core/game-loop.ts";
 import { Game } from "./core/game.ts";
@@ -25,6 +28,8 @@ function shutdown(): void {
   }
 
   teardownTerminal(keypressHandler);
+
+  consola.box(styleText("bold", `Last Score: ${styleText("greenBright", game.getStats().score.toLocaleString())}`));
 }
 
 process.on("SIGINT", shutdown);
@@ -33,7 +38,7 @@ process.on("SIGTERM", shutdown);
 process.on("uncaughtException", (err) => {
   shutdown();
 
-  console.error("Uncaught exception:", err);
+  consola.error("Uncaught exception:", err);
 
   process.exit(1);
 });
