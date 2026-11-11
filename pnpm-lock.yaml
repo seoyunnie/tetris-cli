@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      consola:
+        specifier: ^3.4.2
+        version: 3.4.2
     devDependencies:
       '@seoyunnie/oxc-config':
         specifier: ^1.6.0
@@ -639,6 +643,10 @@ packages:
     resolution: {integrity: sha512-LMDU/U2yA4IPIY8KT0NsNPWEYZvAMkbgyspxJ6btJaYV+WMDOHAZCmB0lsTObiHaRS1V/ztKAl7+TSkTqXyeoA==}
     engines: {node: '>=20.19.0'}
 
+  consola@3.4.2:
+    resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+
   defu@6.1.7:
     resolution: {integrity: sha512-7z22QmUWiQ/2d0KkdYmANbRUVABpZ9SNYyH5vx6PZ+nE5bcC0l7uFvEfHlyld/HcGBFTL536ClDt3DEcSlEJAQ==}
 
@@ -1165,6 +1173,8 @@ snapshots:
   '@yuku-toolchain/types@0.19.0': {}
 
   cac@7.1.0: {}
+
+  consola@3.4.2: {}
 
   defu@6.1.7: {}
 

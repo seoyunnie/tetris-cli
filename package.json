@@ -18,6 +18,9 @@
     "lint:fix": "pnpm run lint --fix",
     "start": "node ./src/index.ts"
   },
+  "dependencies": {
+    "consola": "^3.4.2"
+  },
   "devDependencies": {
     "@seoyunnie/oxc-config": "^1.6.0",
     "@types/node": "^24.19.0",
