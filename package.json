@@ -16,7 +16,9 @@
     "fmt:check": "pnpm run fmt --check",
     "lint": "oxlint",
     "lint:fix": "pnpm run lint --fix",
-    "start": "node ./src/index.ts"
+    "start": "node ./src/index.ts",
+    "test": "vitest run",
+    "test:coverage": "pnpm run test --coverage"
   },
   "dependencies": {
     "consola": "^3.4.2"
@@ -24,11 +26,13 @@
   "devDependencies": {
     "@seoyunnie/oxc-config": "^1.6.0",
     "@types/node": "^24.19.0",
+    "@vitest/coverage-v8": "^5.1.1",
     "oxfmt": "^0.71.0",
     "oxlint": "^1.86.0",
     "oxlint-tsgolint": "^7.0.2003",
     "tsdown": "^0.23.0",
-    "typescript": "~7.0.2"
+    "typescript": "~7.0.2",
+    "vitest": "^5.1.1"
   },
   "devEngines": {
     "packageManager": {
