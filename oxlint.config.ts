@@ -1,4 +1,4 @@
-import { baseConfig } from "@seoyunnie/oxc-config/oxlint";
+import { baseConfig, testConfig } from "@seoyunnie/oxc-config/oxlint";
 import { defineConfig } from "oxlint";
 
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
     es2025: true,
   },
 
-  extends: [baseConfig],
+  extends: [baseConfig, testConfig],
 
   overrides: [
     {
