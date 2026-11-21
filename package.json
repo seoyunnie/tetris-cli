@@ -23,17 +23,17 @@
   },
   "devDependencies": {
     "@seoyunnie/oxc-config": "^1.6.0",
-    "@types/node": "^24.19.0",
-    "oxfmt": "^0.71.0",
-    "oxlint": "^1.86.0",
-    "oxlint-tsgolint": "^7.0.2003",
-    "tsdown": "^0.23.0",
+    "@types/node": "^24.19.2",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "tsdown": "^0.23.7",
     "typescript": "^7.0.2"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^12.8.2",
+      "version": "^12.22.0",
       "onFail": "error"
     },
     "runtime": {
