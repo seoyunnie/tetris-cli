@@ -18,6 +18,28 @@ export default defineConfig({
 
   overrides: [
     {
+      files: ["src/core/matrix.test.ts"],
+
+      plugins: ["vitest"],
+      rules: {
+        /* Correctness */
+        "vitest/expect-expect": [
+          "error",
+          {
+            assertFunctionNames: [
+              "expect",
+              "expectTypeOf",
+              "assert",
+              "assertType",
+
+              "expectInvalidPosition",
+              "expectInvalidRow",
+            ],
+          },
+        ],
+      },
+    },
+    {
       files: ["src/core/tetrominoes.ts"],
 
       rules: {
